@@ -25,17 +25,17 @@ def main():
     
     #Iterate through each tweet
     for line in tweet_file:
-        totalSentiment = 0
+        total_sentiment = 0
         tweet = json.loads(line)
         text = extractText(tweet)
         
         #Iterate through words of each tweet
         for item in text:
             itemSentiment = findSentiment(item, sent_file)
-            totalSentiment = totalSentiment + (itemSentiment)
+            total_sentiment = total_sentiment + (itemSentiment)
 
         #Print Tweet sentiment value
-        print totalSentiment
+        print total_sentiment
 
 
 
