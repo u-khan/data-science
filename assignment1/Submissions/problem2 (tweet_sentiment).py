@@ -2,14 +2,14 @@ import sys
 import json
 
 
-def extractText(words):
+def extract_text(words):
     '''Extracts text from a tweet, lowercases it, and returns a list of the words'''
     text = words['text'].encode('utf-8')
     ltext = text.lower()
     output = ltext.split()
     return output
 
-def findSentiment(word, source):
+def find_sentiment(word, source):
     ''''Takes a word and returns matching sentiment value from source file as int'''
     svalue = 0
     source.seek(0)
@@ -25,17 +25,17 @@ def main():
     
     #Iterate through each tweet
     for line in tweet_file:
-        totalSentiment = 0
+        total_sentiment = 0
         tweet = json.loads(line)
-        text = extractText(tweet)
+        text = extract_text(tweet)
         
         #Iterate through words of each tweet
         for item in text:
-            itemSentiment = findSentiment(item, sent_file)
-            totalSentiment = totalSentiment + (itemSentiment)
+            item_sentiment = find_sentiment(item, sent_file)
+            total_sentiment = total_sentiment + (item_sentiment)
 
         #Print Tweet sentiment value
-        print totalSentiment
+        print total_sentiment
 
 
 
